@@ -16,7 +16,11 @@ const config: webpack.Configuration = {
 
   output: {
     path: fullPath('dist'),
-    filename: '[name].min.js',
+    filename: '[name].js',
+    library: {
+      name: 'DoodlePopup',
+      type: 'umd',
+    },
   },
 
   plugins: [
