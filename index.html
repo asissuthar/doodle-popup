@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><title>Doodle Popup Demo</title><meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width"/><style>body {
+        margin: 0px;
+      }
+      .content {
+        overflow: hidden;
+        width: 100%;
+        height: 1000px;
+      }</style></head><body><iframe class="content" src="http://asissuthar.com/" frameborder="0" width="100%" scrolling="no"></iframe><script>window.addEventListener('load', () => {
+        DoodlePopup.toast('This is Doodle Toast!')
+          .show()
+          .then(() => {
+            console.log('Toast closed');
+          });
+        DoodlePopup.alert('This is Doodle Alert!')
+          .show()
+          .then(() => {
+            console.log('Alert closed');
+          });
+        DoodlePopup.confirm('This is Doodle Confirm!')
+          .show()
+          .then((value) => {
+            console.log(`Confirm value ${value}`);
+          });
+        DoodlePopup.prompt('This is Doodle Prompt!')
+          .show()
+          .then((value) => {
+            console.log(`Prompt value ${value}`);
+          });
+      });</script><script src="doodle-popup.min.js"></script></body></html>
