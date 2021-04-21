@@ -1,6 +1,6 @@
 {
   "name": "doodle-popup",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Promise based custom popups for replacing default alert, confirm, and prompt dialogs.",
   "keywords": [
     "promise",
@@ -10,7 +10,9 @@
     "prompt",
     "toast"
   ],
-  "main": "dist/doodle-popup.js",
+  "main": "./dist/doodle-popup.js",
+  "types": "./types/doodle-popup.d.ts",
+  "browser": "./dist/doodle-popup.js",
   "repository": "https://github.com/asissuthar/doodle-popup.git",
   "author": "Ashish Suthar <asissuthar@gmail.com>",
   "license": "MIT",
