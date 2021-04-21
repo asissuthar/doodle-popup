@@ -9,6 +9,7 @@
         "esModuleInterop": true,
         "allowJs": true,
         "suppressImplicitAnyIndexErrors": true,
+        "declaration": true
     },
     "exclude": [
         "node_modules"

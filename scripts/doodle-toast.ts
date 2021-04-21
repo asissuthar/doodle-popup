@@ -2,7 +2,7 @@ import { CSSResult, customElement, html, TemplateResult } from 'lit-element';
 import PopupBase from './popup-base';
 import { toastStyles } from './styles';
 @customElement('doodle-toast')
-class DoodleToast extends PopupBase {
+export class DoodleToast extends PopupBase {
   public constructor(message = '', position = 'bottom', duration = 3000) {
     super(message, position, duration);
   }
@@ -26,7 +26,3 @@ class DoodleToast extends PopupBase {
     `;
   }
 }
-
-export default (message = '', position = 'bottom', duration = 3000): DoodleToast => {
-  return new DoodleToast(message, position, duration);
-};

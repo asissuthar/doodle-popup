@@ -3,7 +3,7 @@ import PopupBase from './popup-base';
 import { alertStyles } from './styles';
 
 @customElement('doodle-alert')
-class DoodleAlert extends PopupBase {
+export class DoodleAlert extends PopupBase {
   public constructor(message = '', position = 'center') {
     super(message, position);
   }
@@ -34,7 +34,3 @@ class DoodleAlert extends PopupBase {
     this.close(true);
   }
 }
-
-export default (message = '', position = 'center'): DoodleAlert => {
-  return new DoodleAlert(message, position);
-};

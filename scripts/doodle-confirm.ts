@@ -3,7 +3,7 @@ import PopupBase from './popup-base';
 import { confirmStyles } from './styles';
 
 @customElement('doodle-confirm')
-class DoodleConfirm extends PopupBase {
+export class DoodleConfirm extends PopupBase {
   public constructor(message = '', position = 'center') {
     super(message, position);
   }
@@ -39,7 +39,3 @@ class DoodleConfirm extends PopupBase {
     this.close(false);
   }
 }
-
-export default (message = '', position = 'center'): DoodleConfirm => {
-  return new DoodleConfirm(message, position);
-};

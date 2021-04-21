@@ -3,7 +3,7 @@ import PopupBase from './popup-base';
 import { promptStyle } from './styles';
 
 @customElement('doodle-prompt')
-class DoodlePrompt extends PopupBase {
+export class DoodlePrompt extends PopupBase {
   @property({ type: String })
   public value = '';
 
@@ -48,7 +48,3 @@ class DoodlePrompt extends PopupBase {
     this.value = inputElement.value;
   }
 }
-
-export default (message = '', position = 'center'): DoodlePrompt => {
-  return new DoodlePrompt(message, position);
-};
