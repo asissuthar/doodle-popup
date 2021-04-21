@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "target": "ES6",
+        "module": "CommonJS",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "suppressImplicitAnyIndexErrors": true,
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
