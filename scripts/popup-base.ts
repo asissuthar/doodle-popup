@@ -1,4 +1,5 @@
-import { LitElement, property } from 'lit-element';
+import { LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
 
 const popupQueue: Array<PopupBase> = [];
 let currentPopup: PopupBase | null | undefined = null;
@@ -51,6 +52,11 @@ export default class PopupBase extends LitElement {
     this.message = message;
     this.position = position;
     this.duration = duration;
+  }
+
+  protected onOverlayMouseDown(event: MouseEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   public show(): Promise<boolean | string | null> {

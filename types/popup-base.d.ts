@@ -1,4 +1,4 @@
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 export default class PopupBase extends LitElement {
     message: string;
     position: string;
@@ -9,6 +9,7 @@ export default class PopupBase extends LitElement {
     protected static resetCurrentPopup(): void;
     protected static getCurrentPopup(): PopupBase | null | undefined;
     constructor(message?: string, position?: string, duration?: number);
+    protected onOverlayMouseDown(event: MouseEvent): void;
     show(): Promise<boolean | string | null>;
     close(value: boolean | string | null): void;
 }

@@ -1,4 +1,4 @@
-import { css } from 'lit-element';
+import { css } from 'lit';
 
 const popupBaseStyles = css`
   *,
@@ -7,7 +7,7 @@ const popupBaseStyles = css`
     box-sizing: border-box;
   }
 
-  :host {
+  .popup-overlay {
     font-family: sans-serif;
     position: fixed;
     top: 0px;
@@ -18,6 +18,7 @@ const popupBaseStyles = css`
     justify-content: center;
     oveflow: hidden;
     background: rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
   }
 
   .popup {
@@ -92,7 +93,7 @@ const popupBaseStyles = css`
 export const toastStyles = css`
   ${popupBaseStyles}
 
-  :host {
+  .popup-overlay {
     background: rgba(0, 0, 0, 0);
     pointer-events: none;
   }

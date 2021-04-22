@@ -1,4 +1,5 @@
-import { CSSResult, customElement, html, TemplateResult } from 'lit-element';
+import { CSSResultGroup, html, TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import PopupBase from './popup-base';
 import { confirmStyles } from './styles';
 
@@ -8,7 +9,7 @@ export class DoodleConfirm extends PopupBase {
     super(message, position);
   }
 
-  public static get styles(): CSSResult {
+  public static get styles(): CSSResultGroup {
     return confirmStyles;
   }
 
@@ -21,11 +22,13 @@ export class DoodleConfirm extends PopupBase {
 
   protected render(): TemplateResult {
     return html`
-      <div class="${this.getAlertClasses()}">
-        <div>${this.message}</div>
-        <div class="popup-buttons">
-          <button class="popup-button popup-button-ok" @click="${this.onClickOk}">OK</button>
-          <button class="popup-button popup-button-cancel" @click="${this.onClickCancel}">Cancel</button>
+      <div class="popup-overlay" @mousedown="${this.onOverlayMouseDown}">
+        <div class="${this.getAlertClasses()}">
+          <div>${this.message}</div>
+          <div class="popup-buttons">
+            <button class="popup-button popup-button-ok" @click="${this.onClickOk}">OK</button>
+            <button class="popup-button popup-button-cancel" @click="${this.onClickCancel}">Cancel</button>
+          </div>
         </div>
       </div>
     `;

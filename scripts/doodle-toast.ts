@@ -1,4 +1,5 @@
-import { CSSResult, customElement, html, TemplateResult } from 'lit-element';
+import { CSSResultGroup, html, TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import PopupBase from './popup-base';
 import { toastStyles } from './styles';
 @customElement('doodle-toast')
@@ -7,7 +8,7 @@ export class DoodleToast extends PopupBase {
     super(message, position, duration);
   }
 
-  public static get styles(): CSSResult {
+  public static get styles(): CSSResultGroup {
     return toastStyles;
   }
 
@@ -20,8 +21,10 @@ export class DoodleToast extends PopupBase {
 
   protected render(): TemplateResult {
     return html`
-      <div class="${this.getToastClasses()}">
-        <div>${this.message}</div>
+      <div class="popup-overlay">
+        <div class="${this.getToastClasses()}">
+          <div>${this.message}</div>
+        </div>
       </div>
     `;
   }
