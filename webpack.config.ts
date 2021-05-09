@@ -11,24 +11,26 @@ const config: webpack.Configuration = {
   entry: {
     'doodle-popup': {
       import: fullPath('scripts/doodle-popup.ts'),
+      library: {
+        name: 'DoodlePopup',
+        type: 'umd',
+      },
     },
   },
 
   output: {
     path: fullPath('dist'),
     filename: '[name].js',
-    library: {
-      name: 'DoodlePopup',
-      type: 'umd',
-    },
   },
 
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: fullPath('index.html'),
-      inject: 'body',
       scriptLoading: 'blocking',
+      inject: false,
+      hash: true,
+      minify: false,
     }),
   ],
 
