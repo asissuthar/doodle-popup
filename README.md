@@ -1,10 +1,35 @@
 # Doodle Popup
 
-Promise based custom popups for replacing default alert, confirm, and prompt dialogs.
+[![npm](https://img.shields.io/npm/v/doodle-popup)](https://www.npmjs.com/package/doodle-popup)
+[![size](https://img.shields.io/bundlephobia/min/doodle-popup)](https://unpkg.com/doodle-popup)
+[![downloads](https://img.shields.io/npm/dm/doodle-popup)](https://www.npmjs.com/package/doodle-popup)
+[![license](https://img.shields.io/github/license/asissuthar/doodle-popup)](https://github.com/asissuthar/doodle-popup)
 
-### Demo
+Promise based custom popups as alternative to browser default alert, confirm, and prompt dialogs.
 
-```javascript
+It is developed using [TypeScript](https://www.typescriptlang.org/) and [Lit](https://lit.dev/).
+
+Doodle Popups are native web components. Doodle Popups work anywhere you use HTML, with any framework or none at all.
+
+### [Demo](https://asissuthar.github.io/doodle-popup)
+
+## Installation
+
+Using jsDelivr CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/doodle-popup/dist/doodle-popup.js"></script>
+```
+
+Using unpkg CDN:
+
+```html
+<script src="https://unpkg.com/doodle-popup"></script>
+```
+
+## Examples
+
+```js
 DoodlePopup.toast('This is Doodle Toast!')
   .show()
   .then(() => {
@@ -20,19 +45,54 @@ DoodlePopup.alert('This is Doodle Alert!')
 DoodlePopup.confirm('This is Doodle Confirm!')
   .show()
   .then((value) => {
+    // value: boolean
     console.log(`Confirm value ${value}`);
   });
 
 DoodlePopup.prompt('This is Doodle Prompt!')
   .show()
   .then((value) => {
+    // value: string
     console.log(`Prompt value ${value}`);
   });
 ```
 
-### Development
+## Parameters
+
+```ts
+function alert(
+  message?: string, // default ''
+  position?: string // default 'center'
+): DoodleAlert { ... }
+
+function confirm(
+  message?: string, // default ''
+  position?: string // default 'center'
+): DoodleConfirm { ... }
+
+function prompt(
+  message?: string, // default ''
+  position?: string // default 'center'
+): DoodlePrompt { ... }
+
+function toast(
+  message?: string, // default ''
+  position?: string // default 'bottom'
+  duration?: number // default 3000
+): DoodleToast { ... }
+
+function show(): Promise<boolean | string | null> { ... }
+
+function close(value: boolean | string | null): void { ... }
+```
+
+## Development
 
 ```bash
+# Get source
+$ git clone https://github.com/asissuthar/doodle-popup.git
+$ cd doodle-popup
+
 # Install packages
 $ yarn
 
@@ -42,3 +102,9 @@ $ yarn serve
 # Production build
 $ yarn prod
 ```
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2021-present, Ashish Suthar
