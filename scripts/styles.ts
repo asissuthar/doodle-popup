@@ -35,7 +35,7 @@ const popupBaseStyles = css`
   }
 
   .popup-top {
-    margin-top: 40px;
+    margin-top: 20vh;
     align-self: flex-start;
   }
 
@@ -44,7 +44,7 @@ const popupBaseStyles = css`
   }
 
   .popup-bottom {
-    margin-bottom: 40px;
+    margin-bottom: 20vh;
     align-self: flex-end;
   }
 

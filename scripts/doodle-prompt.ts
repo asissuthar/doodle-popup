@@ -1,10 +1,13 @@
 import { CSSResultGroup, html, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import PopupBase from './popup-base';
 import { promptStyle } from './styles';
 
 @customElement('doodle-prompt')
 export class DoodlePrompt extends PopupBase {
+  @query('.popup-input-text')
+  public _inputText!: HTMLInputElement;
+
   @property({ type: String })
   public value = '';
 
@@ -36,6 +39,11 @@ export class DoodlePrompt extends PopupBase {
         </div>
       </div>
     `;
+  }
+
+  public firstUpdated(): void {
+    super.connectedCallback();
+    this._inputText.focus();
   }
 
   private onClickOk(): void {
