@@ -7,64 +7,157 @@
       content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
     />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/prism.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
-      <header class="p-2">
-        <h1 class="text-center">Doodle Popup</h1>
+      <header class="row justify-content-center p-2 px-0">
+        <div class="col col-md-6">
+          <div class="row align-items-center justify-content-between">
+            <div class="col"><h1>Doodle Popup</h1></div>
+            <div class="col-auto">
+              <a
+                class="github-button"
+                href="https://github.com/asissuthar/doodle-popup"
+                data-show-count="true"
+                data-size="large"
+                aria-label="Star asissuthar/doodle-popup on GitHub"
+                >Star</a
+              >
+            </div>
+          </div>
+        </div>
       </header>
-      <main>
-        <div class="row align-items-center justify-content-center">
-          <div class="col-auto">
-            <button onclick="showToast()" class="btn btn-primary">Toast</button>
+      <main class="row justify-content-center">
+        <div class="col col-md-6">
+          <p>
+            <a href="https://www.npmjs.com/package/doodle-popup"
+              ><img src="https://img.shields.io/npm/v/doodle-popup" alt="npm"
+            /></a>
+            <a href="https://unpkg.com/doodle-popup"
+              ><img src="https://img.shields.io/bundlephobia/min/doodle-popup" alt="size"
+            /></a>
+            <a href="https://www.npmjs.com/package/doodle-popup"
+              ><img src="https://img.shields.io/npm/dm/doodle-popup" alt="downloads"
+            /></a>
+            <a href="https://github.com/asissuthar/doodle-popup"
+              ><img src="https://img.shields.io/github/license/asissuthar/doodle-popup" alt="license"
+            /></a>
+          </p>
+          <p>Promise based custom popups as alternative to browser default alert, confirm, and prompt dialogs.</p>
+          <div x-data="cdnSection()">
+            <div>
+              <pre><code class="language-html" x-text="cdn"></code></pre>
+            </div>
+            <div class="text-end">
+              <button
+                data-copy-code
+                data-clipboard-action="copy"
+                :data-clipboard-text="cdn"
+                data-bs-placement="bottom"
+                data-bs-trigger="manual"
+                data-bs-title="Copied!"
+                class="btn btn-primary"
+              >
+                Copy
+              </button>
+            </div>
           </div>
-          <div class="col-auto">
-            <button onclick="showAlert()" class="btn btn-primary">Alert</button>
-          </div>
-          <div class="col-auto">
-            <button onclick="showConfirm()" class="btn btn-primary">Confirm</button>
-          </div>
-          <div class="col-auto">
-            <button onclick="showPrompt()" class="btn btn-primary">Prompt</button>
+          <div x-data="demoSection()">
+            <template x-for="(example, index) in examples" :key="index">
+              <div class="pb-4">
+                <h4 x-text="example.name"></h4>
+                <div>
+                  <pre><code class="language-js" x-text="example.code"></code></pre>
+                </div>
+                <div class="text-end">
+                  <button
+                    data-copy-code
+                    data-clipboard-action="copy"
+                    :data-clipboard-text="example.code"
+                    data-bs-placement="bottom"
+                    data-bs-trigger="manual"
+                    data-bs-title="Copied!"
+                    class="btn btn-primary"
+                  >
+                    Copy
+                  </button>
+                  <button @click="eval(example.code)" class="btn btn-primary">Run</button>
+                </div>
+              </div>
+            </template>
           </div>
         </div>
       </main>
-      <footer></footer>
+      <footer class="p-2 px-0"></footer>
     </div>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <script src="assets/js/prism.js"></script>
     <%= htmlWebpackPlugin.tags.bodyTags %>
     <script>
-      function showToast() {
-        DoodlePopup.toast('This is Doodle Toast!')
-          .show()
-          .then(() => {
-            console.log('Toast closed');
-          });
+      function cdnSection() {
+        return {
+          cdn: '<script src="https:\/\/unpkg.com\/doodle-popup"><\/script>',
+        };
       }
 
-      function showAlert() {
-        DoodlePopup.alert('This is Doodle Alert!')
-          .show()
-          .then(() => {
-            console.log('Alert closed');
-          });
+      function demoSection() {
+        return {
+          examples: [
+            {
+              name: 'Toast',
+              code: `DoodlePopup.toast('This is Doodle Toast!')
+  .show()
+  .then(() => {
+    console.log('Toast closed');
+  });`,
+            },
+            {
+              name: 'Alert',
+              code: `DoodlePopup.alert('This is Doodle Alert!')
+  .show()
+  .then(() => {
+    console.log('Alert closed');
+  });`,
+            },
+            {
+              name: 'Confirm',
+              code: `DoodlePopup.confirm('This is Doodle Confirm!')
+  .show()
+  .then((value) => {
+    console.log(\`Confirm value \${value}\`);
+  });`,
+            },
+            {
+              name: 'Prompt',
+              code: `DoodlePopup.prompt('This is Doodle Prompt!')
+  .show()
+  .then((value) => {
+    console.log(\`Prompt value \${value}\`);
+  });`,
+            },
+          ],
+        };
       }
 
-      function showConfirm() {
-        DoodlePopup.confirm('This is Doodle Confirm!')
-          .show()
-          .then((value) => {
-            console.log(`Confirm value ${value}`);
-          });
-      }
-
-      function showPrompt() {
-        DoodlePopup.prompt('This is Doodle Prompt!')
-          .show()
-          .then((value) => {
-            console.log(`Prompt value ${value}`);
-          });
-      }
+      window.addEventListener('load', () => {
+        const clipboard = new ClipboardJS('[data-copy-code]');
+        clipboard.on('success', function (e) {
+          if (e.action === 'copy') {
+            const tooltip = new bootstrap.Tooltip(e.trigger);
+            tooltip.show();
+            setTimeout(() => {
+              tooltip.hide();
+              delete tooltip;
+            }, 500);
+          }
+          e.clearSelection();
+        });
+      });
     </script>
   </body>
 </html>

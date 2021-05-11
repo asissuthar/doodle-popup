@@ -1,7 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+// import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 function fullPath(relativePath: string): string {
   return path.resolve(__dirname, relativePath);
@@ -24,13 +25,21 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: fullPath('index.html'),
       scriptLoading: 'blocking',
       inject: false,
       hash: true,
       minify: false,
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: fullPath('assets'),
+          to: fullPath('dist/assets'),
+        },
+      ],
     }),
   ],
 
