@@ -60,6 +60,8 @@ DoodlePopup.prompt('This is Doodle Prompt!')
 ## Parameters
 
 ```ts
+// position: string = 'top' | 'center' | 'bottom'
+
 function alert(
   message?: string, // default ''
   position?: string // default 'center'
