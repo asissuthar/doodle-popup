@@ -57,6 +57,26 @@ DoodlePopup.prompt('This is Doodle Prompt!')
   });
 ```
 
+Using with async/wait
+
+```js
+async function getFullName() {
+  const firstName = await DoodlePopup.prompt('Enter First Name').show();
+
+  const lastName = await DoodlePopup.prompt('Enter Last Name').show();
+
+  const fullName = `${firstName} ${lastName}`;
+
+  await DoodlePopup.toast(fullName).show();
+
+  return fullName;
+}
+
+getFullName().then((fullName) => {
+  console.log(`Your full name is ${fullName}`);
+});
+```
+
 ## Parameters
 
 ```ts
