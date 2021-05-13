@@ -1,7 +1,7 @@
 # Doodle Popup
 
 [![npm](https://img.shields.io/npm/v/doodle-popup)](https://www.npmjs.com/package/doodle-popup)
-[![size](https://img.shields.io/bundlephobia/min/doodle-popup)](https://unpkg.com/doodle-popup)
+[![gzip size](https://img.shields.io/bundlephobia/minzip/doodle-popup?label=gzip%20size)](https://unpkg.com/doodle-popup)
 [![downloads](https://img.shields.io/npm/dm/doodle-popup)](https://www.npmjs.com/package/doodle-popup)
 [![license](https://img.shields.io/github/license/asissuthar/doodle-popup)](https://github.com/asissuthar/doodle-popup)
 
@@ -107,6 +107,4 @@ $ yarn prod
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
-
-Copyright (c) 2021-present, Ashish Suthar
+Doodle Popup is licensed under a [MIT License](./LICENSE).
