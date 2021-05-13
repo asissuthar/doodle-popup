@@ -95,9 +95,9 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
     <script src="assets/js/prism.js"></script>
-    <script src="doodle-popup.js?4a1c68d5fff084726636"></script>
+    <script src="doodle-popup.js?87d6f6189fdb6527a6ab"></script>
     <script>
       function cdnSection() {
         return {
@@ -144,7 +144,7 @@
         };
       }
 
-      window.addEventListener('load', () => {
+      window.addEventListener('DOMContentLoaded', () => {
         const clipboard = new ClipboardJS('[data-copy-code]');
         clipboard.on('success', function (e) {
           if (e.action === 'copy') {
