@@ -63,13 +63,22 @@
               </button>
             </div>
           </div>
-          <div x-data="demoSection()">
+          <div x-data="demoSection()" x-init="load">
             <template x-for="(example, index) in examples" :key="index">
               <div class="pb-4">
-                <h4 x-text="example.name"></h4>
-                <div>
-                  <pre><code class="language-js" x-text="example.code"></code></pre>
-                </div>
+                <h4 class="text-capitalize" x-text="example.name"></h4>
+                <template x-if="example.code === null">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                </template>
+                <template x-if="example.code !== null">
+                  <div>
+                    <pre><code class="language-js" x-text="example.code"></code></pre>
+                  </div>
+                </template>
                 <div class="text-end">
                   <button
                     data-copy-code
@@ -92,11 +101,11 @@
       <footer class="p-2 px-0"></footer>
     </div>
 
+    <script src="assets/js/prism.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
-    <script src="assets/js/prism.js"></script>
     <%= htmlWebpackPlugin.tags.bodyTags %>
     <script>
       function cdnSection() {
@@ -109,38 +118,36 @@
         return {
           examples: [
             {
-              name: 'Toast',
-              code: `DoodlePopup.toast('This is Doodle Toast!')
-  .show()
-  .then(() => {
-    console.log('Toast closed');
-  });`,
+              name: 'toast',
+              code: null,
             },
             {
-              name: 'Alert',
-              code: `DoodlePopup.alert('This is Doodle Alert!')
-  .show()
-  .then(() => {
-    console.log('Alert closed');
-  });`,
+              name: 'alert',
+              code: null,
             },
             {
-              name: 'Confirm',
-              code: `DoodlePopup.confirm('This is Doodle Confirm!')
-  .show()
-  .then((value) => {
-    console.log(\`Confirm value \${value}\`);
-  });`,
+              name: 'confirm',
+              code: null,
             },
             {
-              name: 'Prompt',
-              code: `DoodlePopup.prompt('This is Doodle Prompt!')
-  .show()
-  .then((value) => {
-    console.log(\`Prompt value \${value}\`);
-  });`,
+              name: 'prompt',
+              code: null,
             },
           ],
+          async load() {
+            for (let example of this.examples) {
+              try {
+                const response = await fetch(`assets/js/example/${example.name}.js`);
+                const code = await response.text();
+                example.code = code;
+              } catch (error) {
+                console.error(error);
+              }
+            }
+            setTimeout(() => {
+              Prism.highlightAll();
+            }, 0);
+          },
         };
       }
 
